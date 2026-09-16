@@ -1,0 +1,44 @@
+services:
+  vllm:
+    image: vllm/vllm-openai:latest
+    command:
+      - --model=Qwen/Qwen2.5-Coder-3B-Instruct
+      - --enable-lora
+      - --lora-modules=mbpp-lora=/adapters/mbpp-lora
+      - --max-lora-rank=16
+      - --dtype=float16
+      - --gpu-memory-utilization=0.85
+      - --max-model-len=1024
+      - --enforce-eager
+    volumes:
+      - ./qwen2.5-3b-coder-lora-v3:/adapters/mbpp-lora:ro
+      - hf-cache:/root/.cache/huggingface
+    ports:
+      - "8000:8000"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 60s
+
+  api:
+    build: .
+    environment:
+      - VLLM_BASE_URL=http://vllm:8000/v1
+      - LORA_ADAPTER_NAME=mbpp-lora
+    ports:
+      - "8080:8080"
+    depends_on:
+      vllm:
+        condition: service_healthy
+
+volumes:
+  hf-cache:
