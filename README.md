@@ -55,7 +55,7 @@ User Problem ---> Qwen2.5-3B + LoRA ---> Code Extraction
 
 ```
 ├── qwen2.5-3b-coder-lora-v3/    # Trained LoRA adapter weights and tokenizer
-├── quen-ai updated.ipynb        # Clean end-to-end training and evaluation notebook
+├── quen-ai.ipynb                # Clean end-to-end training and evaluation notebook
 ├── app.py                       # FastAPI REST backend service
 ├── mbpp_harness_fix.py          # Sandboxed execution and self-correction engine
 ├── Dockerfile                   # Container definition for service deployment
@@ -69,7 +69,7 @@ User Problem ---> Qwen2.5-3B + LoRA ---> Code Extraction
 ## Quick Start
 
 ### 1. Interactive Notebook Execution
-Open `quen-ai updated.ipynb` in any Jupyter or Kaggle environment with GPU support. Run the interactive cell at the bottom to generate and test code for any programming prompt.
+Open `quen-ai.ipynb` in any Jupyter or Kaggle environment with GPU support. Run the interactive cell at the bottom to generate and test code for any programming prompt.
 
 ### 2. Containerized Deployment (vLLM + FastAPI)
 ```bash
