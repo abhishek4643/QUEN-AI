@@ -11,26 +11,9 @@ This document defines the visual design system: UI components, design tokens, an
 
 ### 1. Design Principles
 
-<table width="100%" cellpadding="0" cellspacing="8" border="0">
-  <tr>
-    <td width="25%" style="background-color: #0D1117; border: 1px solid #30363D; border-radius: 8px; padding: 18px 14px;">
-      <div style="color: #818CF8; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em;">User-Centered</div>
-      <div style="color: #8B949E; font-size: 12px; margin-top: 6px; line-height: 1.5;">Simple and intuitive for developers; instant error tracebacks and one-click execution.</div>
-    </td>
-    <td width="25%" style="background-color: #0D1117; border: 1px solid #30363D; border-radius: 8px; padding: 18px 14px;">
-      <div style="color: #34D399; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em;">Minimal & Clean</div>
-      <div style="color: #8B949E; font-size: 12px; margin-top: 6px; line-height: 1.5;">Reduce clutter and focus strictly on code diffs, test assertions, and runtime states.</div>
-    </td>
-    <td width="25%" style="background-color: #0D1117; border: 1px solid #30363D; border-radius: 8px; padding: 18px 14px;">
-      <div style="color: #EC4899; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em;">Consistent</div>
-      <div style="color: #8B949E; font-size: 12px; margin-top: 6px; line-height: 1.5;">Follow a unified design system across terminal logs, notebooks, and web dashboards.</div>
-    </td>
-    <td width="25%" style="background-color: #0D1117; border: 1px solid #30363D; border-radius: 8px; padding: 18px 14px;">
-      <div style="color: #38BDF8; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em;">Accessible</div>
-      <div style="color: #8B949E; font-size: 12px; margin-top: 6px; line-height: 1.5;">Usable for everyone; high-contrast syntax highlighting conforming to WCAG 2.1 AA.</div>
-    </td>
-  </tr>
-</table>
+<p align="center" style="margin: 20px 0;">
+  <img src="./principles.svg" alt="Qwen2.5-Coder Design Principles" width="100%" />
+</p>
 
 ---
 
