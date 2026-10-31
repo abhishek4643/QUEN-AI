@@ -1,33 +1,37 @@
 # Product Requirements Document (PRD)
 ### Qwen2.5-Coder — Autonomous AI Code Generation & Reflection Assistant
 
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=12,20,26&height=8&section=header&width=100%" width="100%" />
+</div>
+
 This document outlines the product requirements, target user personas, core features, and architectural goals for the **Qwen2.5-Coder** software engineering system.
 
 ---
 
 ## Document Metadata
 
-<div style="background-color: #0F172A; border: 1px solid #1E293B; border-radius: 8px; padding: 18px 20px; margin: 14px 0;">
+<div style="background-color: #0D1117; border: 1px solid #30363D; border-radius: 8px; padding: 18px 20px; margin: 14px 0;">
   <table width="100%" cellpadding="0" cellspacing="6" border="0">
     <tr>
-      <td width="20%"><span style="color: #64748B; font-size: 12px; font-weight: 600;">Version:</span></td>
-      <td><code style="color: #F8FAFC; font-size: 12px;">1.0</code></td>
+      <td width="20%"><span style="color: #8B949E; font-size: 12px; font-weight: 600;">Version:</span></td>
+      <td><code style="color: #F0F6FC; font-size: 12px;">1.0</code></td>
     </tr>
     <tr>
-      <td><span style="color: #64748B; font-size: 12px; font-weight: 600;">Date:</span></td>
-      <td><span style="color: #F8FAFC; font-size: 12px;">October 31, 2026</span></td>
+      <td><span style="color: #8B949E; font-size: 12px; font-weight: 600;">Date:</span></td>
+      <td><span style="color: #F0F6FC; font-size: 12px;">October 31, 2026</span></td>
     </tr>
     <tr>
-      <td><span style="color: #64748B; font-size: 12px; font-weight: 600;">Author:</span></td>
-      <td><span style="color: #F8FAFC; font-size: 12px; font-weight: 600;">Abhishek Perumalla</span></td>
+      <td><span style="color: #8B949E; font-size: 12px; font-weight: 600;">Author:</span></td>
+      <td><span style="color: #F0F6FC; font-size: 12px; font-weight: 600;">Abhishek Perumalla</span></td>
     </tr>
     <tr>
-      <td><span style="color: #64748B; font-size: 12px; font-weight: 600;">Status:</span></td>
-      <td><span style="background-color: #065F46; color: #A7F3D0; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; letter-spacing: 0.03em;">PRODUCTION RELEASE</span></td>
+      <td><span style="color: #8B949E; font-size: 12px; font-weight: 600;">Status:</span></td>
+      <td><span style="background-color: #1E1B4B; color: #34D399; border: 1px solid #065F46; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; letter-spacing: 0.03em;">PRODUCTION RELEASE</span></td>
     </tr>
     <tr>
-      <td><span style="color: #64748B; font-size: 12px; font-weight: 600;">Target Launch:</span></td>
-      <td><code style="color: #F8FAFC; font-size: 12px;">MVP (v1.0)</code></td>
+      <td><span style="color: #8B949E; font-size: 12px; font-weight: 600;">Target Launch:</span></td>
+      <td><code style="color: #F0F6FC; font-size: 12px;">MVP (v1.0)</code></td>
     </tr>
   </table>
 </div>

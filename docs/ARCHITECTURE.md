@@ -1,7 +1,11 @@
 # System Architecture
 ### Qwen2.5-Coder — Architectural Topology, Data Flow, and System Specifications
 
-This document describes the overall system architecture, technology stack, directory structure, data flow, and key design decisions for the Qwen2.5-Coder software engineering platform.
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=12,20,26&height=8&section=header&width=100%" width="100%" />
+</div>
+
+This document describes the overall system architecture, technology stack, directory structure, data flow, and key design decisions for the **Qwen2.5-Coder** software engineering platform.
 
 ---
 
@@ -9,31 +13,31 @@ This document describes the overall system architecture, technology stack, direc
 
 Qwen2.5-Coder follows a decoupled, resilient architecture separating high-throughput generative inference from isolated subprocess execution:
 
-<div style="background-color: #0B0F19; border: 1px solid #1E293B; border-radius: 12px; padding: 24px 16px; margin: 16px 0;">
+<div style="background-color: #0D1117; border: 1px solid #30363D; border-radius: 12px; padding: 24px 16px; margin: 16px 0;">
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
     <tr align="center">
-      <td width="22%" style="background-color: #BFDBFE; border-radius: 10px; padding: 18px 12px;">
+      <td width="22%" style="background-color: #BFDBFE; border-radius: 10px; padding: 18px 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
         <div style="color: #1E3A8A; font-size: 14px; font-weight: 700; letter-spacing: 0.02em;">User / Client</div>
         <div style="color: #1E40AF; font-size: 11px; margin-top: 4px; font-weight: 500;">(CLI / Web IDE)</div>
       </td>
-      <td width="4%" style="color: #64748B; font-size: 14px; font-weight: 600;">
+      <td width="4%" style="color: #8B949E; font-size: 13px; font-weight: 600;">
         <div>&larr; HTTPS &rarr;</div>
       </td>
-      <td width="22%" style="background-color: #A7F3D0; border-radius: 10px; padding: 18px 12px;">
+      <td width="22%" style="background-color: #A7F3D0; border-radius: 10px; padding: 18px 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
         <div style="color: #065F46; font-size: 14px; font-weight: 700; letter-spacing: 0.02em;">FastAPI Gateway</div>
         <div style="color: #047857; font-size: 11px; margin-top: 4px; font-weight: 500;">(Validation / Routing)</div>
       </td>
-      <td width="4%" style="color: #64748B; font-size: 14px; font-weight: 600;">
+      <td width="4%" style="color: #8B949E; font-size: 13px; font-weight: 600;">
         <div>&larr; IPC &rarr;</div>
       </td>
-      <td width="22%" style="background-color: #FDE68A; border-radius: 10px; padding: 18px 12px;">
+      <td width="22%" style="background-color: #FDE68A; border-radius: 10px; padding: 18px 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
         <div style="color: #78350F; font-size: 14px; font-weight: 700; letter-spacing: 0.02em;">vLLM Serving Engine</div>
         <div style="color: #92400E; font-size: 11px; margin-top: 4px; font-weight: 500;">(Qwen2.5-Coder-3B + LoRA)</div>
       </td>
-      <td width="4%" style="color: #64748B; font-size: 14px; font-weight: 600;">
+      <td width="4%" style="color: #8B949E; font-size: 13px; font-weight: 600;">
         <div>&larr; Jail &rarr;</div>
       </td>
-      <td width="22%" style="background-color: #FBCFE8; border-radius: 10px; padding: 18px 12px;">
+      <td width="22%" style="background-color: #FBCFE8; border-radius: 10px; padding: 18px 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
         <div style="color: #831843; font-size: 14px; font-weight: 700; letter-spacing: 0.02em;">Isolated Sandbox</div>
         <div style="color: #9D174D; font-size: 11px; margin-top: 4px; font-weight: 500;">(POSIX setrlimit / AST Engine)</div>
       </td>
@@ -47,16 +51,16 @@ Qwen2.5-Coder follows a decoupled, resilient architecture separating high-throug
 
 Technologies used across the project and their architectural purpose:
 
-| Layer | Technology | Purpose |
+| Domain | Technology | Implementation Detail |
 | :-- | :-- | :-- |
-| **Foundation Model** | Qwen2.5-Coder-3B-Instruct | High-efficiency 3B parameter model specialized in code generation and logic |
-| **Fine-Tuning Framework** | PyTorch + Hugging Face PEFT (LoRA) | Parameter-efficient training with low-rank adapters (loss converged: 2.46 &rarr; 0.27) |
-| **Inference Serving** | vLLM Engine | PagedAttention GPU serving with continuous batching and dynamic adapter swapping |
-| **API Gateway** | FastAPI (Python 3.11) | High-performance asynchronous REST endpoints for code synthesis and test evaluation |
-| **Sandbox Isolation** | Linux resource (`setrlimit`) + subprocess | Hardware resource throttling (RAM, CPU, PIDs, FDs) preventing malicious escape |
-| **HTTP Transport** | HTTPX (Async Client) | Resilient connection-pooled client communicating with the vLLM backend |
+| **Foundation Model** | Qwen2.5-Coder-3B-Instruct | High-efficiency 3B parameter model specialized in code generation and algorithmic logic |
+| **Fine-Tuning Stack** | PyTorch + Hugging Face PEFT | Parameter-efficient LoRA training ($r=16, \alpha=32$); loss converged from 2.46 &rarr; 0.27 |
+| **Inference Serving** | vLLM Engine | Continuous batching and PagedAttention GPU serving with dynamic adapter loading |
+| **API Gateway** | FastAPI (Python 3.11) | Asynchronous REST endpoints (`/generate`, `/evaluate`, `/solve`) with Pydantic v2 validation |
+| **Sandbox Isolation** | Linux resource (`setrlimit`) + subprocess | POSIX hardware throttling (5s CPU, 256MB RAM, 1 child process, 64 open FDs) |
+| **HTTP Transport** | HTTPX (Async Client) | Resilient connection-pooled client communicating with the vLLM OpenAI-compatible backend |
 | **Containerization** | Docker & Docker Compose | Multi-container orchestration binding FastAPI gateway and vLLM runtime |
-| **Evaluation Suite** | MBPP (Mostly Basic Python Problems) | 43-problem validation benchmark verifying 100% pass rates |
+| **Evaluation Suite** | MBPP Benchmark | 43-problem validation benchmark verifying 100% pass rates across algorithmic domains |
 | **Version Control** | Git + GitHub | Source repository and artifact versioning (`abhishek4643/QUEN-AI`) |
 
 ---
