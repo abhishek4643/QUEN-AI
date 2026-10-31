@@ -11,25 +11,9 @@ This document maintains operational context, key architectural decisions, and ru
 
 ## Session Status Dashboard
 
-<table width="100%" cellpadding="0" cellspacing="8" border="0">
-  <tr>
-    <td width="33%" style="background-color: #0D1117; border: 1px solid #30363D; border-radius: 8px; padding: 18px 16px;">
-      <div style="color: #818CF8; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;">Last Updated</div>
-      <div style="font-size: 20px; font-weight: 800; color: #F0F6FC; margin: 6px 0;">Oct 31, 2026</div>
-      <div style="color: #8B949E; font-size: 11px;">12:35 PM IST</div>
-    </td>
-    <td width="33%" style="background-color: #0D1117; border: 1px solid #30363D; border-radius: 8px; padding: 18px 16px;">
-      <div style="color: #A78BFA; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;">Current Phase</div>
-      <div style="font-size: 20px; font-weight: 800; color: #F0F6FC; margin: 6px 0;">Phase 5</div>
-      <div style="color: #A78BFA; font-size: 11px; font-weight: 600;">Production & Benchmark Verified</div>
-    </td>
-    <td width="33%" style="background-color: #0D1117; border: 1px solid #30363D; border-radius: 8px; padding: 18px 16px;">
-      <div style="color: #34D399; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;">Verification Status</div>
-      <div style="font-size: 20px; font-weight: 800; color: #F0F6FC; margin: 6px 0;">100.0% Pass Rate</div>
-      <div style="color: #34D399; font-size: 11px; font-weight: 600;">43 / 43 MBPP Benchmark</div>
-    </td>
-  </tr>
-</table>
+<p align="center" style="margin: 20px 0;">
+  <img src="./memory_status.svg" alt="Project Memory Status Dashboard" width="100%" />
+</p>
 
 ---
 

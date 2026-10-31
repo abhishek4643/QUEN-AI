@@ -13,37 +13,9 @@ This document describes the overall system architecture, technology stack, direc
 
 Qwen2.5-Coder follows a decoupled, resilient architecture separating high-throughput generative inference from isolated subprocess execution:
 
-<div style="background-color: #0D1117; border: 1px solid #30363D; border-radius: 12px; padding: 24px 16px; margin: 16px 0;">
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-    <tr align="center">
-      <td width="22%" style="background-color: #BFDBFE; border-radius: 10px; padding: 18px 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
-        <div style="color: #1E3A8A; font-size: 14px; font-weight: 700; letter-spacing: 0.02em;">User / Client</div>
-        <div style="color: #1E40AF; font-size: 11px; margin-top: 4px; font-weight: 500;">(CLI / Web IDE)</div>
-      </td>
-      <td width="4%" style="color: #8B949E; font-size: 13px; font-weight: 600;">
-        <div>&larr; HTTPS &rarr;</div>
-      </td>
-      <td width="22%" style="background-color: #A7F3D0; border-radius: 10px; padding: 18px 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
-        <div style="color: #065F46; font-size: 14px; font-weight: 700; letter-spacing: 0.02em;">FastAPI Gateway</div>
-        <div style="color: #047857; font-size: 11px; margin-top: 4px; font-weight: 500;">(Validation / Routing)</div>
-      </td>
-      <td width="4%" style="color: #8B949E; font-size: 13px; font-weight: 600;">
-        <div>&larr; IPC &rarr;</div>
-      </td>
-      <td width="22%" style="background-color: #FDE68A; border-radius: 10px; padding: 18px 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
-        <div style="color: #78350F; font-size: 14px; font-weight: 700; letter-spacing: 0.02em;">vLLM Serving Engine</div>
-        <div style="color: #92400E; font-size: 11px; margin-top: 4px; font-weight: 500;">(Qwen2.5-Coder-3B + LoRA)</div>
-      </td>
-      <td width="4%" style="color: #8B949E; font-size: 13px; font-weight: 600;">
-        <div>&larr; Jail &rarr;</div>
-      </td>
-      <td width="22%" style="background-color: #FBCFE8; border-radius: 10px; padding: 18px 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
-        <div style="color: #831843; font-size: 14px; font-weight: 700; letter-spacing: 0.02em;">Isolated Sandbox</div>
-        <div style="color: #9D174D; font-size: 11px; margin-top: 4px; font-weight: 500;">(POSIX setrlimit / AST Engine)</div>
-      </td>
-    </tr>
-  </table>
-</div>
+<p align="center" style="margin: 20px 0;">
+  <img src="./architecture.svg" alt="System Architecture Flow" width="100%" />
+</p>
 
 ---
 

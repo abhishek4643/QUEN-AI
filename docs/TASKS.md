@@ -11,31 +11,9 @@ This document contains the complete list of engineering tasks for building, opti
 
 ## Project Status Dashboard
 
-<table width="100%" cellpadding="0" cellspacing="8" border="0">
-  <tr>
-    <td width="33%" style="background-color: #0D1117; border: 1px solid #30363D; border-radius: 8px; padding: 18px 16px;">
-      <div style="color: #818CF8; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;">Total Tasks</div>
-      <div style="font-size: 32px; font-weight: 800; color: #F0F6FC; margin: 6px 0;">24</div>
-      <div style="color: #8B949E; font-size: 11px;">100% scoped</div>
-    </td>
-    <td width="33%" style="background-color: #0D1117; border: 1px solid #30363D; border-radius: 8px; padding: 18px 16px;">
-      <div style="color: #34D399; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;">Completed</div>
-      <div style="font-size: 32px; font-weight: 800; color: #F0F6FC; margin: 6px 0;">24</div>
-      <div style="background-color: #21262D; border-radius: 9999px; height: 6px; width: 100%; overflow: hidden; margin-top: 6px;">
-        <div style="background: linear-gradient(90deg, #10B981, #34D399); height: 100%; width: 100%; border-radius: 9999px;"></div>
-      </div>
-      <div style="color: #34D399; font-size: 11px; margin-top: 6px; font-weight: 600;">100% verified</div>
-    </td>
-    <td width="33%" style="background-color: #0D1117; border: 1px solid #30363D; border-radius: 8px; padding: 18px 16px;">
-      <div style="color: #FFA116; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;">In Progress</div>
-      <div style="font-size: 32px; font-weight: 800; color: #F0F6FC; margin: 6px 0;">0</div>
-      <div style="background-color: #21262D; border-radius: 9999px; height: 6px; width: 100%; overflow: hidden; margin-top: 6px;">
-        <div style="background-color: #FFA116; height: 100%; width: 0%; border-radius: 9999px;"></div>
-      </div>
-      <div style="color: #8B949E; font-size: 11px; margin-top: 6px;">Ready for release</div>
-    </td>
-  </tr>
-</table>
+<p align="center" style="margin: 20px 0;">
+  <img src="./tasks_dashboard.svg" alt="Project Tasks Status Dashboard" width="100%" />
+</p>
 
 ---
 

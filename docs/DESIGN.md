@@ -35,60 +35,11 @@ This document defines the visual design system: UI components, design tokens, an
 ---
 
 ### 2. Color Palette
-*Primary colors and gradients used across the application and telemetry interfaces:*
+*Primary colors used across the application:*
 
-<table width="100%" cellpadding="0" cellspacing="6" border="0">
-  <tr align="center">
-    <td width="12.5%">
-      <div style="background-color: #4F46E5; height: 46px; border-radius: 6px; margin-bottom: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.3);"></div>
-      <div style="font-weight: 700; font-size: 12px; color: #F0F6FC;">Primary</div>
-      <div style="font-family: monospace; font-size: 10px; color: #818CF8; margin-top: 2px;">#4F46E5</div>
-      <div style="font-size: 10px; color: #8B949E; margin-top: 4px;">Deep Indigo / Brand CTA</div>
-    </td>
-    <td width="12.5%">
-      <div style="background: linear-gradient(135deg, #7C3AED 0%, #A855F7 100%); height: 46px; border-radius: 6px; margin-bottom: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.3);"></div>
-      <div style="font-weight: 700; font-size: 12px; color: #F0F6FC;">Secondary</div>
-      <div style="font-family: monospace; font-size: 10px; color: #A5B4FC; margin-top: 2px;">#8B5CF6</div>
-      <div style="font-size: 10px; color: #8B949E; margin-top: 4px;">Electric Violet / LoRA</div>
-    </td>
-    <td width="12.5%">
-      <div style="background-color: #EC4899; height: 46px; border-radius: 6px; margin-bottom: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.3);"></div>
-      <div style="font-weight: 700; font-size: 12px; color: #F0F6FC;">Accent</div>
-      <div style="font-family: monospace; font-size: 10px; color: #F472B6; margin-top: 2px;">#EC4899</div>
-      <div style="font-size: 10px; color: #8B949E; margin-top: 4px;">Neon Pink / Active Pulse</div>
-    </td>
-    <td width="12.5%">
-      <div style="background-color: #10B981; height: 46px; border-radius: 6px; margin-bottom: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.3);"></div>
-      <div style="font-weight: 700; font-size: 12px; color: #F0F6FC;">Success</div>
-      <div style="font-family: monospace; font-size: 10px; color: #34D399; margin-top: 2px;">#10B981</div>
-      <div style="font-size: 10px; color: #8B949E; margin-top: 4px;">Emerald / Pass Verdicts</div>
-    </td>
-    <td width="12.5%">
-      <div style="background-color: #FFA116; height: 46px; border-radius: 6px; margin-bottom: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.3);"></div>
-      <div style="font-weight: 700; font-size: 12px; color: #F0F6FC;">Warning</div>
-      <div style="font-family: monospace; font-size: 10px; color: #FBBF24; margin-top: 2px;">#FFA116</div>
-      <div style="font-size: 10px; color: #8B949E; margin-top: 4px;">Amber / Retries & Timeout</div>
-    </td>
-    <td width="12.5%">
-      <div style="background-color: #EA4335; height: 46px; border-radius: 6px; margin-bottom: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.3);"></div>
-      <div style="font-weight: 700; font-size: 12px; color: #F0F6FC;">Error</div>
-      <div style="font-family: monospace; font-size: 10px; color: #F87171; margin-top: 2px;">#EA4335</div>
-      <div style="font-size: 10px; color: #8B949E; margin-top: 4px;">Rose / Assertion Failures</div>
-    </td>
-    <td width="12.5%">
-      <div style="background-color: #0D1117; border: 1px solid #30363D; height: 46px; border-radius: 6px; margin-bottom: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.3);"></div>
-      <div style="font-weight: 700; font-size: 12px; color: #F0F6FC;">Background</div>
-      <div style="font-family: monospace; font-size: 10px; color: #8B949E; margin-top: 2px;">#0D1117</div>
-      <div style="font-size: 10px; color: #8B949E; margin-top: 4px;">Deep Charcoal Canvas</div>
-    </td>
-    <td width="12.5%">
-      <div style="background-color: #161B22; border: 1px solid #30363D; height: 46px; border-radius: 6px; margin-bottom: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.3);"></div>
-      <div style="font-weight: 700; font-size: 12px; color: #F0F6FC;">Surface</div>
-      <div style="font-family: monospace; font-size: 10px; color: #8B949E; margin-top: 2px;">#161B22</div>
-      <div style="font-size: 10px; color: #8B949E; margin-top: 4px;">Elevated Card Container</div>
-    </td>
-  </tr>
-</table>
+<p align="center" style="margin: 20px 0;">
+  <img src="./palette.svg" alt="Color Palette" width="100%" />
+</p>
 
 ---
 
