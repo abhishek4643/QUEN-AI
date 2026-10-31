@@ -17,6 +17,11 @@ Qwen2.5-Coder follows a decoupled, resilient architecture separating high-throug
   <img src="./architecture.svg" alt="Qwen2.5-Coder Architecture Flow" width="100%" />
 </p>
 
+* **User / Client (CLI / Web IDE)**: Submits problem statement and target test assertions over REST.
+* **FastAPI Gateway**: Handles payload validation, function signature normalization, and routing.
+* **vLLM Serving Engine**: Continuous batching GPU inference engine executing fine-tuned LoRA weights.
+* **Isolated Sandbox**: Sandboxed execution running tests with POSIX setrlimit hardware resource ceilings.
+
 ---
 
 ### 2. Technology Stack
