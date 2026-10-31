@@ -14,8 +14,45 @@ This document describes the overall system architecture, technology stack, direc
 Qwen2.5-Coder follows a decoupled, resilient architecture separating high-throughput generative inference from isolated subprocess execution:
 
 <p align="center" style="margin: 20px 0;">
-  <img src="./architecture.svg" alt="System Architecture Flow" width="100%" />
+  <img src="./architecture.svg" alt="Qwen2.5-Coder Architecture Flow" width="100%" />
 </p>
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr align="center" valign="middle">
+    <td bgcolor="#1E3A8A" width="22%" style="background-color: #1E3A8A; color: #BFDBFE; border: 1px solid #3B82F6; border-radius: 10px; padding: 16px 10px;">
+      <div style="font-size: 20px; margin-bottom: 4px;">👤</div>
+      <b style="color: #FFFFFF; font-size: 14px;">User / Client</b><br>
+      <span style="color: #BFDBFE; font-size: 11px;">(CLI / Web IDE)</span>
+    </td>
+    <td width="4%" style="color: #94A3B8; font-size: 12px; font-weight: 600; padding: 0 4px;">
+      <span style="font-size: 10px; color: #94A3B8;">HTTPS</span><br>
+      <span style="font-size: 16px; color: #CBD5E1;">&larr;&rarr;</span>
+    </td>
+    <td bgcolor="#064E3B" width="22%" style="background-color: #064E3B; color: #A7F3D0; border: 1px solid #10B981; border-radius: 10px; padding: 16px 10px;">
+      <div style="font-size: 20px; margin-bottom: 4px;">⚡</div>
+      <b style="color: #FFFFFF; font-size: 14px;">FastAPI Gateway</b><br>
+      <span style="color: #A7F3D0; font-size: 11px;">(Validation / Routing)</span>
+    </td>
+    <td width="4%" style="color: #94A3B8; font-size: 12px; font-weight: 600; padding: 0 4px;">
+      <span style="font-size: 10px; color: #94A3B8;">IPC / v1</span><br>
+      <span style="font-size: 16px; color: #CBD5E1;">&larr;&rarr;</span>
+    </td>
+    <td bgcolor="#78350F" width="22%" style="background-color: #78350F; color: #FDE68A; border: 1px solid #F59E0B; border-radius: 10px; padding: 16px 10px;">
+      <div style="font-size: 20px; margin-bottom: 4px;">🧠</div>
+      <b style="color: #FFFFFF; font-size: 14px;">vLLM Serving Engine</b><br>
+      <span style="color: #FDE68A; font-size: 11px;">(Qwen2.5-Coder-3B + LoRA)</span>
+    </td>
+    <td width="4%" style="color: #94A3B8; font-size: 12px; font-weight: 600; padding: 0 4px;">
+      <span style="font-size: 10px; color: #94A3B8;">Jail</span><br>
+      <span style="font-size: 16px; color: #CBD5E1;">&larr;&rarr;</span>
+    </td>
+    <td bgcolor="#4C1D95" width="22%" style="background-color: #4C1D95; color: #FBCFE8; border: 1px solid #8B5CF6; border-radius: 10px; padding: 16px 10px;">
+      <div style="font-size: 20px; margin-bottom: 4px;">🛡️</div>
+      <b style="color: #FFFFFF; font-size: 14px;">Isolated Sandbox</b><br>
+      <span style="color: #FBCFE8; font-size: 11px;">(POSIX setrlimit / AST)</span>
+    </td>
+  </tr>
+</table>
 
 ---
 

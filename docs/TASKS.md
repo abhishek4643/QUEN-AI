@@ -15,6 +15,26 @@ This document contains the complete list of engineering tasks for building, opti
   <img src="./tasks_dashboard.svg" alt="Project Tasks Status Dashboard" width="100%" />
 </p>
 
+<table width="100%" cellpadding="0" cellspacing="8" border="0">
+  <tr>
+    <td bgcolor="#1E1B4B" width="33%" style="background-color: #1E1B4B; border: 1px solid #4F46E5; border-radius: 8px; padding: 18px 16px;">
+      <div style="color: #818CF8; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">Total Tasks</div>
+      <div style="font-size: 32px; font-weight: 800; color: #FFFFFF; margin: 4px 0;">24</div>
+      <div style="color: #A5B4FC; font-size: 11px;">100% scoped &amp; defined</div>
+    </td>
+    <td bgcolor="#064E3B" width="33%" style="background-color: #064E3B; border: 1px solid #10B981; border-radius: 8px; padding: 18px 16px;">
+      <div style="color: #34D399; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">Completed</div>
+      <div style="font-size: 32px; font-weight: 800; color: #FFFFFF; margin: 4px 0;">24</div>
+      <div style="color: #6EE7B7; font-size: 11px; font-weight: 600;">100% verified &bull; 43/43 MBPP</div>
+    </td>
+    <td bgcolor="#78350F" width="33%" style="background-color: #78350F; border: 1px solid #F59E0B; border-radius: 8px; padding: 18px 16px;">
+      <div style="color: #FDE68A; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">In Progress</div>
+      <div style="font-size: 32px; font-weight: 800; color: #FFFFFF; margin: 4px 0;">0</div>
+      <div style="color: #FDE68A; font-size: 11px;">Ready for release</div>
+    </td>
+  </tr>
+</table>
+
 ---
 
 ### Phase 1: Model Selection & LoRA Fine-Tuning
