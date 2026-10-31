@@ -1,66 +1,70 @@
-# Project Memory
+# 🧠 Project Memory
+### Qwen2.5-Coder — Context, Progress & Important Notes
 
-**Qwen2.5-Coder Autonomous AI Code Generation Engine**  
-*Context, Progress & Important Technical Notes*
-
----
-
-This document maintains live project context, architectural decisions, and operational constraints to ensure continuity across development sessions and AI collaboration workflows.
+> This document keeps track of the current state of the project, important architectural decisions, and operational constraints to remember. It helps maintain continuity across development sessions, AI collaboration workflows, and new contributors.
 
 ---
 
-## Project Health & Status Cards
+## Session Status Cards
 
-| Last Updated | Current Phase | Build & Benchmark Status |
-| :--- | :--- | :--- |
-| **October 31, 2026** | **Phase 5: Production Deployed & Verified** | **100% Pass Rate (43/43 MBPP)** |
-
----
-
-## 1. Current Status
-
-* [x] Foundation model weights (`Qwen2.5-Coder-3B-Instruct`) loaded and verified.
-* [x] LoRA adapter (`qwen2.5-3b-coder-lora-v3`) trained (loss: 2.46 $\rightarrow$ 0.27).
-* [x] Hardened execution sandbox operational with POSIX `setrlimit` throttles.
-* [x] Autonomous self-correction reflection loop recovering 100% of benchmark edge cases.
-* [x] FastAPI REST endpoints (`/generate`, `/evaluate`, `/solve`) functional.
-* [x] Docker and Docker Compose container configurations verified.
-* [x] Complete documentation suite (`docs/`) generated and aligned with architecture standards.
-
----
-
-## 2. Completed Milestones
-
-| # | Task / Milestone | Completed On |
-| :--- | :--- | :--- |
-| 1.0 | Fine-tune Qwen2.5-Coder-3B on algorithmic dataset with LoRA | Sep 16, 2026 |
-| 2.0 | Implement subprocess sandbox with POSIX memory and CPU throttles | Sep 18, 2026 |
-| 3.0 | Build closed-loop self-correction prompt engineer and retry loop | Sep 20, 2026 |
-| 4.0 | Containerize FastAPI gateway and link to vLLM OpenAI-compatible server | Sep 24, 2026 |
-| 5.0 | Verify 100% pass rate on MBPP 43-problem validation suite | Oct 11, 2026 |
-| 6.0 | Publish documentation suite (`PRD`, `ARCHITECTURE`, `RULES`, `DESIGN`, `TASKS`, `MEMORY`) | Oct 31, 2026 |
+<table>
+  <tr>
+    <td width="33%" style="background-color: #111827; border: 1px solid #1f2937; border-radius: 8px; padding: 14px;">
+      <div style="color: #60a5fa; font-size: 13px; font-weight: 600;">📅 Last Updated</div>
+      <div style="font-size: 18px; font-weight: bold; color: #f9fafb; margin: 4px 0;">Oct 31, 2026</div>
+      <div style="color: #9ca3af; font-size: 11px;">12:25 PM IST</div>
+    </td>
+    <td width="33%" style="background-color: #111827; border: 1px solid #1f2937; border-radius: 8px; padding: 14px;">
+      <div style="color: #a78bfa; font-size: 13px; font-weight: 600;">👤 Current Phase</div>
+      <div style="font-size: 18px; font-weight: bold; color: #f9fafb; margin: 4px 0;">Phase 5</div>
+      <div style="color: #a78bfa; font-size: 11px; font-weight: 600;">Production & Benchmark Verified</div>
+    </td>
+    <td width="33%" style="background-color: #111827; border: 1px solid #1f2937; border-radius: 8px; padding: 14px;">
+      <div style="color: #34d399; font-size: 13px; font-weight: 600;">🎯 Overall Health</div>
+      <div style="font-size: 18px; font-weight: bold; color: #f9fafb; margin: 4px 0;">100.0% Pass Rate</div>
+      <div style="color: #34d399; font-size: 11px; font-weight: 600;">43 / 43 MBPP Benchmark</div>
+    </td>
+  </tr>
+</table>
 
 ---
 
-## 3. Key Architectural Decisions Log
+### 🎯 Current Status
 
-* **LoRA Rank Selection ($r=16, \alpha=32$)**: Provided the ideal balance between learning capacity and parameter size. Avoided full parameter fine-tuning, keeping adapter files compact (~80MB).
-* **Deterministic Name Harmonization**: Instead of penalizing the LLM for using standard function names like `solve` or `find_result`, `ensure_expected_name()` parses test cases and injects aliases. This boosted first-pass pass rate by 14%.
-* **Decoupled vLLM Engine**: Separating model serving (vLLM) from code execution (FastAPI sandbox) ensures that heavy LLM memory usage never interferes with test runner memory limits.
-
----
-
-## 4. Critical Constraints & Pitfalls to Avoid
-
-1. **Windows vs. Linux Subprocess Limits**: `import resource` is only natively available on Linux environments. In `app.py`, resource limit calls are guarded with `if resource is not None:`. In Windows dev environments, limits fall back gracefully to standard timeout parameters, while Docker containers enforce full POSIX limits.
-2. **Preventing Code Extraction Leakage**: The model occasionally wraps explanations around code. Always route raw output through `extract_code()` before attempting AST parsing or subprocess execution.
-3. **Infinite Reflection Prevention**: Always enforce `max_corrections=2`. If code does not pass after two rounds of feedback, the system must return `status: FAILED` with all tracebacks rather than looping indefinitely.
+<div style="background-color: #0F172A; border-left: 4px solid #10B981; border-radius: 6px; padding: 14px 18px; margin: 10px 0;">
+  <p style="margin: 4px 0;">✅ <b>Base Model Weights Initialized</b> (<code>Qwen2.5-Coder-3B-Instruct</code> loaded and verified).</p>
+  <p style="margin: 4px 0;">✅ <b>LoRA Adapter Trained</b> (loss converged from <code>2.46</code> to <code>0.27</code>; adapter size ~80 MB).</p>
+  <p style="margin: 4px 0;">✅ <b>Hardened Execution Sandbox Operational</b> (POSIX <code>setrlimit</code> throttles: 5s CPU, 256MB RAM).</p>
+  <p style="margin: 4px 0;">✅ <b>Self-Correction Reflection Loop Verified</b> (recovers 100% of benchmark edge cases without human intervention).</p>
+  <p style="margin: 4px 0;">✅ <b>FastAPI REST Service Containerized</b> (endpoints <code>/generate</code>, <code>/evaluate</code>, <code>/solve</code> via Docker Compose).</p>
+  <p style="margin: 4px 0;">✅ <b>Full Visual Documentation Suite Active</b> (aligned with UI standard across all 6 files).</p>
+</div>
 
 ---
 
-## 5. Next Steps / Active Roadmap
+### ✅ Completed Tasks
 
-* [ ] Integrate live web playground for interactive code editing and real-time execution telemetry.
-* [ ] Add automated telemetry logging to Prometheus / Grafana for API generation latency monitoring.
-* [ ] Implement support for Multi-Language compilation (C, C++, Rust) inside isolated gVisor runtimes.
+| # | Task | Completed On |
+| :-: | :-- | :-: |
+| **1.1** | Fine-tune Qwen2.5-Coder-3B on algorithmic dataset with LoRA | Sep 16, 2026 |
+| **1.2** | Implement subprocess sandbox with POSIX memory and CPU throttles | Sep 18, 2026 |
+| **1.3** | Build closed-loop self-correction prompt engineer and retry loop | Sep 20, 2026 |
+| **1.4** | Containerize FastAPI gateway and link to vLLM OpenAI-compatible server | Sep 24, 2026 |
+| **1.5** | Verify 100% pass rate on MBPP 43-problem validation suite | Oct 11, 2026 |
+| **1.6** | Publish complete visual documentation suite in `docs/` | Oct 31, 2026 |
 
+---
+
+### 💡 Key Architectural Decisions Log
+
+* **LoRA Rank Selection ($r=16, \alpha=32$)**: Provided optimal expressive power while keeping the serialized checkpoint lightweight (~80MB). Avoided heavy full-parameter checkpoints.
+* **Deterministic Name Harmonization (`ensure_expected_name`)**: Automatically aliases function names to match test fixtures, preventing false negative `NameError` rejections and improving first-pass accuracy by 14%.
+* **Decoupled vLLM Engine**: Separating GPU inference from CPU-bound sandbox execution prevents GPU memory fragmentation during intensive unit testing.
+
+---
+
+### ⚠️ Critical Constraints & Pitfalls to Avoid
+
+1. **Windows vs. Linux Subprocess Limits**: `import resource` is only natively supported on Linux. On Windows environments, limit calls are safely guarded with `if resource is not None:`. Docker containers enforce strict POSIX throttles.
+2. **Preventing Code Extraction Leakage**: The model occasionally wraps explanations around generated code. Raw output must always pass through `extract_code()` before AST parsing.
+3. **Max Corrections Cap**: Never allow reflection loops to run indefinitely. Always cap at `max_corrections=2` and return failure telemetry if unresolvable.

@@ -1,100 +1,71 @@
 # Product Requirements Document (PRD)
+### Qwen2.5-Coder — Your Autonomous AI Code Generation & Reflection Assistant
 
-**Qwen2.5-Coder Autonomous AI Code Generation & Self-Correction Engine**  
-*Production-Grade Generative Code Assistant with Real-Time Sandboxed Execution & Autonomous Reflection*
-
----
-
-| Metadata | Specification |
-| :--- | :--- |
-| **Version** | 1.0 |
-| **Date** | October 2026 |
-| **Author** | Abhishek Perumalla |
-| **Status** | Production / Benchmark Verified |
-| **Target Launch** | MVP (v1.0) |
+> This document outlines the product requirements, user personas, core features, and architectural goals for the **Qwen2.5-Coder** software engineering system.
 
 ---
 
-## 1. Product Overview
+## Document Metadata
 
-The **Qwen2.5-Coder Autonomous AI Code Generation Engine** is an end-to-end, self-correcting software development agent powered by `Qwen2.5-Coder-3B-Instruct` fine-tuned via Low-Rank Adaptation (LoRA). 
-
-Unlike standard LLM code generation tools that output code without runtime validation, this engine establishes a closed-loop execution and reflection environment. Generated solutions are dynamically compiled and executed against rigorous assertions within a hardened OS-level sandbox. If execution yields an error (syntax, runtime, timeout, or logic failure), the system intercepts the execution traceback, constructs a reflective repair prompt, and autonomously corrects the code until 100% of test assertions pass.
-
----
-
-## 2. Problem Statement
-
-Modern software engineers and automated workflows suffer from the reliability gap in AI code generation:
-1. **Hallucinated Syntax & Signatures**: Foundation models frequently hallucinate deprecated APIs, incorrect function signatures, or misaligned parameter types.
-2. **Zero Runtime Feedback**: Conventional code assistants emit code into the IDE without deterministic verification against target test cases.
-3. **Manual Human Debugging Loop**: When AI-generated code fails, developers spend significant time manually reading tracebacks and re-prompting the model.
-4. **Execution Security Risks**: Running untrusted AI-generated code on developer workstations exposes systems to fork-bombs, memory exhaustion, and unauthorized file access.
+<table>
+  <tr>
+    <td style="background-color: #111827; border: 1px solid #1f2937; border-radius: 8px; padding: 14px 18px;">
+      <p style="margin: 4px 0;"><b>Version:</b> <code>1.0</code></p>
+      <p style="margin: 4px 0;"><b>Date:</b> <code>October 31, 2026</code></p>
+      <p style="margin: 4px 0;"><b>Author:</b> <code>Abhishek Perumalla</code></p>
+      <p style="margin: 4px 0;"><b>Status:</b> <span style="background-color: #059669; color: white; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: bold;">Verified Production Release</span></p>
+      <p style="margin: 4px 0;"><b>Target Launch:</b> <code>MVP (v1.0)</code></p>
+    </td>
+  </tr>
+</table>
 
 ---
 
-## 3. Goals & Success Metrics
+### 1. Product Overview
+**Qwen2.5-Coder** is an end-to-end, self-correcting software development agent powered by `Qwen2.5-Coder-3B-Instruct` fine-tuned via Low-Rank Adaptation (LoRA). It couples generative code intelligence with a real-time, POSIX-hardened execution sandbox. If generated code yields any runtime, syntax, or assertion failure, the system automatically intercepts the execution traceback, constructs a reflective repair prompt, and autonomously corrects the code until 100% of test assertions pass.
 
-* **100% Test Pass Rate**: Achieve full autonomous resolution across standard algorithmic benchmarks (MBPP).
-* **Zero Human Intervention**: Automatically intercept errors and heal failing code through reflection loops without developer prompts.
+---
+
+### 2. Problem Statement
+Software developers frequently encounter frustrating friction when using standard generative AI assistants:
+* **Hallucinated Logic & Syntax**: Conventional foundation models emit plausible-looking code that breaks during compilation or edge-case execution.
+* **Absence of Runtime Feedback**: LLMs cannot "run" the code they output, leading to broken unit tests and subtle regressions.
+* **Manual Debugging Overhead**: Developers must manually copy runtime tracebacks and repeatedly re-prompt the assistant to get a fix.
+* **Host Execution Vulnerabilities**: Running AI-generated code directly on local machines risks CPU denial-of-service, memory leaks, and unauthorized file access.
+
+---
+
+### 3. Goals
+* **100% Deterministic Pass Rate**: Achieve full autonomous resolution across standard algorithmic benchmarks (MBPP).
+* **Zero-Touch Self-Correction**: Automatically intercept errors and heal failing code through reflection loops without developer prompts.
 * **Hardened Sandbox Isolation**: Restrict CPU time (5s), virtual memory (256 MB), processes (1), and open file descriptors (64) per test execution.
 * **Low-Latency Serving**: Serve inferences in under 6.5s per round via vLLM and FastAPI.
-* **Multi-Language Adaptability**: Support dynamic sandboxed execution for Python, C, and C++.
+* **Production Containerization**: Provide a one-command multi-container Docker Compose deployment stack.
 
 ---
 
-## 4. Target Users
-
-* **Software Engineers & Developers**: Requiring verified algorithmic implementations and bug-free boilerplate generation.
-* **Automated CI/CD Pipelines**: Automated bot repairing broken unit tests in pull requests autonomously.
-* **Competitive Programmers & Students**: Real-time feedback and explanation of runtime bugs and algorithmic optimizations.
-* **Autonomous Agent Platforms**: Backend code execution and verification layer for multi-agent workflows.
-
----
-
-## 5. Core Features (MVP)
-
-### 5.1 Fine-Tuned Model Weights (LoRA)
-* Fine-tuned on curated algorithmic datasets using PyTorch and Hugging Face PEFT.
-* Training loss converged from `2.46` to `0.27`, specializing the model in concise, production-ready code outputs.
-
-### 5.2 Deterministic Code Extractor & Normalizer
-* Extracts raw executable source code from Markdown code fences (```python).
-* AST inspection to ensure generated function signatures strictly conform to target test assertion names.
-
-### 5.3 Hardened Subprocess Sandbox
-* Isolated subprocess execution with OS-level `setrlimit` boundaries:
-  * `RLIMIT_CPU`: 5 seconds hard cap.
-  * `RLIMIT_AS`: 256 MB address space.
-  * `RLIMIT_NPROC`: Maximum 1 child process (prevents fork-bombs).
-  * `RLIMIT_NOFILE`: Maximum 64 file descriptors.
-* Five execution status classifications: `PASS`, `SYNTAX_ERROR`, `RUNTIME_ERROR`, `TIMEOUT`, `WRONG_ANSWER`.
-
-### 5.4 Autonomous Self-Correction Reflection Loop
-* Intercepts `stderr`, exception type, failing inputs, and traceback lines upon execution failure.
-* Formulates a specialized reflection prompt injecting the original prompt, failed implementation, and exact runtime error.
-* Iteratively feeds corrections back into the model up to `max_corrections=2` rounds.
-
-### 5.5 High-Throughput FastAPI REST Service
-* Production REST API containerized with Docker and Docker Compose:
-  * `POST /generate`: Fast zero-shot code synthesis.
-  * `POST /evaluate`: Hardened sandboxed test runner.
-  * `POST /solve`: End-to-end generation, verification, and autonomous reflection loop.
+### 4. Target Users
+* **Software Engineers & Developers**: Requiring verified algorithmic implementations and bug-free boilerplate code.
+* **Automated CI/CD Bot Agents**: Autonomous bots resolving failing unit tests in pull requests before human review.
+* **Competitive Programmers & Students**: Real-time feedback, traceback explanation, and algorithmic optimizations.
+* **Multi-Agent Systems**: High-reliability code execution and verification layer for developer tooling agents.
 
 ---
 
-## 6. Non-Functional Requirements
-
-* **Reliability**: 99.9% uptime for the API gateway; graceful timeout recovery if a sub-process crashes.
-* **Security**: Total isolation of code execution prevents host file system mutation and network access.
-* **Scalability**: Decoupled vLLM model engine allowing horizontal scaling of sandboxed worker containers.
-* **Portability**: Standardized OCI container images deployable on Kubernetes, AWS ECS, or bare-metal Linux.
+### 5. Core Features (MVP)
+1. **Fine-Tuned LoRA Adapter**: Specialized Qwen2.5-3B weights with training loss converged from `2.46` to `0.27`.
+2. **Deterministic Code Extractor & Normalizer**: Markdown code fence parser and AST function aliaser (`ensure_expected_name`).
+3. **Hardened POSIX Sandbox**: Subprocess execution isolation enforcing `RLIMIT_CPU`, `RLIMIT_AS`, `RLIMIT_NPROC`, and `RLIMIT_NOFILE`.
+4. **Autonomous Self-Correction Reflection Loop**: Closed-loop prompt repair mechanism handling runtime tracebacks and unit test failures.
+5. **High-Throughput FastAPI REST Service**:
+   * `POST /generate`: Fast zero-shot code synthesis.
+   * `POST /evaluate`: Hardened sandboxed test runner.
+   * `POST /solve`: End-to-end generation, verification, and autonomous reflection loop.
+6. **Production Docker Deployment**: Fully orchestrated multi-container deployment linking vLLM serving and FastAPI API.
 
 ---
 
-## 7. Future Enhancements
-
-* Multi-turn chat interface with live syntax-highlighted IDE diff viewer.
-* Support for external package installation inside ephemeral microVMs (Firecracker / gVisor).
-* Reinforcement Learning from Compiler Feedback (RLCF) for continuous online adapter optimization.
-
+### 6. Non-Functional Requirements
+* **Performance**: Generation latency $< 6.5$ seconds under vLLM PagedAttention continuous batching.
+* **Security**: Zero file system mutation outside ephemeral execution boundaries; zero socket leaks.
+* **Availability**: 99.9% uptime for the FastAPI REST gateway service.
