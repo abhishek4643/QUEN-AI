@@ -38,53 +38,8 @@ This document defines the visual design system: UI components, design tokens, an
 *Primary colors used across the application and telemetry interfaces:*
 
 <p align="center" style="margin: 20px 0;">
-  <img src="./palette.svg" alt="Color Palette" width="100%" />
+  <img src="./palette.svg" alt="Qwen2.5-Coder Design System Color Palette" width="100%" />
 </p>
-
-<table width="100%" cellpadding="0" cellspacing="6" border="0" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;">
-  <tr align="center" valign="top">
-    <td bgcolor="#536DFE" width="12.5%" style="background-color: #536DFE; color: #FFFFFF; border-radius: 8px; padding: 16px 8px; box-shadow: 0 4px 6px -1px rgba(83, 109, 254, 0.3);">
-      <b style="color: #FFFFFF; font-size: 13px;">Primary</b><br>
-      <code style="color: #FFFFFF; font-size: 11px;">#536DFE</code><br>
-      <span style="color: #E0E7FF; font-size: 10px;">Brand CTA</span>
-    </td>
-    <td bgcolor="#8B5CF6" width="12.5%" style="background-color: #8B5CF6; color: #FFFFFF; border-radius: 8px; padding: 16px 8px; box-shadow: 0 4px 6px -1px rgba(139, 92, 246, 0.3);">
-      <b style="color: #FFFFFF; font-size: 13px;">Secondary</b><br>
-      <code style="color: #FFFFFF; font-size: 11px;">#8B5CF6</code><br>
-      <span style="color: #EDE9FE; font-size: 10px;">LoRA / Badges</span>
-    </td>
-    <td bgcolor="#10B981" width="12.5%" style="background-color: #10B981; color: #FFFFFF; border-radius: 8px; padding: 16px 8px; box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.3);">
-      <b style="color: #FFFFFF; font-size: 13px;">Success</b><br>
-      <code style="color: #FFFFFF; font-size: 11px;">#10B981</code><br>
-      <span style="color: #D1FAE5; font-size: 10px;">Pass Verdict</span>
-    </td>
-    <td bgcolor="#F59E0B" width="12.5%" style="background-color: #F59E0B; color: #FFFFFF; border-radius: 8px; padding: 16px 8px; box-shadow: 0 4px 6px -1px rgba(245, 158, 11, 0.3);">
-      <b style="color: #FFFFFF; font-size: 13px;">Warning</b><br>
-      <code style="color: #FFFFFF; font-size: 11px;">#F59E0B</code><br>
-      <span style="color: #FEF3C7; font-size: 10px;">Retries / Alert</span>
-    </td>
-    <td bgcolor="#EF4444" width="12.5%" style="background-color: #EF4444; color: #FFFFFF; border-radius: 8px; padding: 16px 8px; box-shadow: 0 4px 6px -1px rgba(239, 68, 68, 0.3);">
-      <b style="color: #FFFFFF; font-size: 13px;">Error</b><br>
-      <code style="color: #FFFFFF; font-size: 11px;">#EF4444</code><br>
-      <span style="color: #FEE2E2; font-size: 10px;">Traceback</span>
-    </td>
-    <td bgcolor="#F7F8FC" width="12.5%" style="background-color: #F7F8FC; color: #182033; border: 1px solid #CBD5E1; border-radius: 8px; padding: 16px 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-      <b style="color: #182033; font-size: 13px;">Background</b><br>
-      <code style="color: #475569; font-size: 11px;">#F7F8FC</code><br>
-      <span style="color: #64748B; font-size: 10px;">Light Canvas</span>
-    </td>
-    <td bgcolor="#FFFFFF" width="12.5%" style="background-color: #FFFFFF; color: #182033; border: 1px solid #CBD5E1; border-radius: 8px; padding: 16px 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-      <b style="color: #182033; font-size: 13px;">Surface</b><br>
-      <code style="color: #475569; font-size: 11px;">#FFFFFF</code><br>
-      <span style="color: #64748B; font-size: 10px;">Cards / UI</span>
-    </td>
-    <td bgcolor="#182033" width="12.5%" style="background-color: #182033; color: #FFFFFF; border: 1px solid #334155; border-radius: 8px; padding: 16px 8px; box-shadow: 0 4px 6px -1px rgba(24, 32, 51, 0.4);">
-      <b style="color: #FFFFFF; font-size: 13px;">Text</b><br>
-      <code style="color: #94A3B8; font-size: 11px;">#182033</code><br>
-      <span style="color: #94A3B8; font-size: 10px;">Dark Slate</span>
-    </td>
-  </tr>
-</table>
 
 ---
 

@@ -1,0 +1,89 @@
+<svg width="100%" height="100%" viewBox="0 0 960 170" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 14px; font-weight: 700; text-anchor: middle; }
+      .subtitle { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 11px; font-weight: 500; text-anchor: middle; }
+      .protocol { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 10px; font-weight: 600; fill: #94A3B8; text-anchor: middle; letter-spacing: 0.05em; }
+    </style>
+    <marker id="arrow-left" viewBox="0 0 10 10" refX="2" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 8 2 L 2 5 L 8 8" fill="none" stroke="#CBD5E1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrow-right" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 2 2 L 8 5 L 2 8" fill="none" stroke="#CBD5E1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <filter id="card-shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="3" flood-opacity="0.15" />
+    </filter>
+  </defs>
+
+  <!-- Container Canvas -->
+  <rect width="960" height="170" rx="14" fill="#0B0F19" stroke="#1E293B" stroke-width="1" />
+
+  <!-- 1. User / Client Card -->
+  <g transform="translate(24, 25)">
+    <rect width="180" height="120" rx="12" fill="#BFDBFE" filter="url(#card-shadow)" />
+    <!-- User / Terminal Icon -->
+    <g transform="translate(76, 16)" stroke="#1E3A8A" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 21v-2a4 4 0 0 0-4-4H10a4 4 0 0 0-4 4v2" />
+      <circle cx="14" cy="7" r="4" />
+    </g>
+    <text x="90" y="78" class="title" fill="#1E3A8A">User / Client</text>
+    <text x="90" y="98" class="subtitle" fill="#1E40AF">(CLI / Web IDE)</text>
+  </g>
+
+  <!-- Arrow 1 (User <-> FastAPI Gateway) -->
+  <g transform="translate(204, 85)">
+    <text x="25" y="-12" class="protocol">HTTPS / REST</text>
+    <line x1="6" y1="0" x2="44" y2="0" stroke="#CBD5E1" stroke-width="1.8" marker-start="url(#arrow-left)" marker-end="url(#arrow-right)" />
+  </g>
+
+  <!-- 2. FastAPI Gateway Card -->
+  <g transform="translate(254, 25)">
+    <rect width="185" height="120" rx="12" fill="#A7F3D0" filter="url(#card-shadow)" />
+    <!-- Server / Gateway Icon -->
+    <g transform="translate(78, 16)" stroke="#065F46" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="3" width="24" height="16" rx="2" ry="2" />
+      <line x1="2" y1="8" x2="26" y2="8" />
+      <line x1="7" y1="5.5" x2="7.01" y2="5.5" />
+      <line x1="11" y1="5.5" x2="11.01" y2="5.5" />
+    </g>
+    <text x="92" y="78" class="title" fill="#065F46">FastAPI Gateway</text>
+    <text x="92" y="98" class="subtitle" fill="#047857">(Validation / Routing)</text>
+  </g>
+
+  <!-- Arrow 2 (Gateway <-> vLLM Engine) -->
+  <g transform="translate(439, 85)">
+    <text x="23" y="-12" class="protocol">IPC / v1</text>
+    <line x1="6" y1="0" x2="40" y2="0" stroke="#CBD5E1" stroke-width="1.8" marker-start="url(#arrow-left)" marker-end="url(#arrow-right)" />
+  </g>
+
+  <!-- 3. vLLM Serving Engine Card -->
+  <g transform="translate(485, 25)">
+    <rect width="210" height="120" rx="12" fill="#FDE68A" filter="url(#card-shadow)" />
+    <!-- AI Brain / Model Engine Icon -->
+    <g transform="translate(91, 16)" stroke="#78350F" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="14" cy="14" r="3.5" />
+      <path d="M22.4 17a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V23a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 12 21.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H5a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 6.6 12a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H12a1.65 1.65 0 0 0 1-1.51V5a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V12a1.65 1.65 0 0 0 1.51 1H23a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+    </g>
+    <text x="105" y="78" class="title" fill="#78350F">vLLM Serving Engine</text>
+    <text x="105" y="98" class="subtitle" fill="#92400E">(Qwen2.5-Coder-3B + LoRA)</text>
+  </g>
+
+  <!-- Arrow 3 (vLLM / Gateway <-> Sandbox) -->
+  <g transform="translate(695, 85)">
+    <text x="23" y="-12" class="protocol">Subprocess</text>
+    <line x1="6" y1="0" x2="40" y2="0" stroke="#CBD5E1" stroke-width="1.8" marker-start="url(#arrow-left)" marker-end="url(#arrow-right)" />
+  </g>
+
+  <!-- 4. Isolated Sandbox Card -->
+  <g transform="translate(741, 25)">
+    <rect width="195" height="120" rx="12" fill="#FBCFE8" filter="url(#card-shadow)" />
+    <!-- Hardened Shield / Sandbox Icon -->
+    <g transform="translate(83, 16)" stroke="#831843" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+      <path d="M9 12l2 2 4-4" />
+    </g>
+    <text x="97" y="78" class="title" fill="#831843">Isolated Sandbox</text>
+    <text x="97" y="98" class="subtitle" fill="#9D174D">(POSIX setrlimit / AST Engine)</text>
+  </g>
+</svg>
